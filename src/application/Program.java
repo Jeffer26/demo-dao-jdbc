@@ -8,9 +8,12 @@ import model.entities.Seller;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args){
+
+        Scanner leitor = new Scanner(System.in);
 
         System.out.println("===== Test 1: seller findById =====");
         SellerDao sellerDao = DaoFactory.creatSellerDao();//dessa forma o programa não conhece as dependencias só a interface
@@ -45,6 +48,14 @@ public class Program {
         seller.setName("Martha Waine");
         sellerDao.update(seller);
         System.out.println("Update completed");
+
+        System.out.println("===== Test 6: seller delete =====");
+        System.out.print("Enter id for delete: ");
+        int id = leitor.nextInt();
+        sellerDao.deleteById(id);
+        System.out.println("Delete completed!");
+
+
 
     }
 }
